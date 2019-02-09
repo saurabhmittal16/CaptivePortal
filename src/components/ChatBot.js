@@ -2,8 +2,14 @@ import React from 'react';
 import { Input } from 'antd';
 import BotMessage from './BotMessage';
 import UserMessage from './UserMessage';
+import ScrollToBottom from 'react-scroll-to-bottom';
+import { css } from 'glamor';
 
 const Search = Input.Search;
+const ROOT_CSS = css({
+    height: '100vh',
+    width: '100%'
+});
 
 class ChatBot extends React.Component {
     constructor(props) {
@@ -42,24 +48,27 @@ class ChatBot extends React.Component {
         );
         this.inputRef.current.input.state.value = '';
     } 
-
+    
     render() {
         return (
-            <div className='chat'>
-                <div className='head'>Chatbot</div>
-                <div className='body'>
-                {
-                    this.state.messages.map(
-                        (message, i) => (
-                            message.id === 0 ? <BotMessage text={message.text} key={i} /> : <UserMessage text={message.text} key={i} />
+            <ScrollToBottom className={ ROOT_CSS } mode="bottom">
+                <div className='chat' ref={this.main}>
+                    <div className='head'>Chatbot</div>
+                    <div className='body'>
+                    {
+                        this.state.messages.map(
+                            (message, i) => (
+                                message.id === 0 ? <BotMessage text={message.text} key={i} /> : <UserMessage text={message.text} key={i} />
+                            )
                         )
-                    )
-                }
+                    }
+                    </div>
+                    <div className='message'>
+                        <Search ref={this.inputRef} enterButton={'>'} onSearch={val => this.handleSend(val)} className='search' />
+                    </div>
                 </div>
-                <div className='message'>
-                    <Search ref={this.inputRef} enterButton={'>'} onSearch={val => this.handleSend(val)} className='search' />
-                </div>
-            </div>
+            </ScrollToBottom>
+            
         );
     }
 }

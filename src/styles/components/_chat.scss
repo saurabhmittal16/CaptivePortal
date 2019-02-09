@@ -1,8 +1,10 @@
 .chat {
+    scroll-behavior: inherit;
+
     .head {
         background-color: rgb(41, 41, 122);
         font-size: 18px;
-        color: rgba(255, 255, 255, 0.904);
+        color: rgba(148, 51, 51, 0.904);
         padding: 10px 10px;
     }
 
