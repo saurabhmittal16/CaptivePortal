@@ -1,3 +1,11 @@
-const events = require('./event')
+const controller = require('./../controller/event.js')
 
-module.exports = [].concat(events)
+const routes = [
+    {
+        method: 'GET',
+        url: '/api/event',
+        handler: controller.findDetails
+    }
+];
+
+module.exports = [].concat(routes)
