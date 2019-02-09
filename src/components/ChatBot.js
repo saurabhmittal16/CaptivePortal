@@ -1,9 +1,11 @@
 import React from 'react';
 import { Input } from 'antd';
-import BotMessage from './BotMessage';
-import UserMessage from './UserMessage';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import { css } from 'glamor';
+
+import BotMessage from './BotMessage';
+import UserMessage from './UserMessage';
+import fetchResponse from './FetchResponse';
 
 const Search = Input.Search;
 const ROOT_CSS = css({
@@ -37,7 +39,10 @@ class ChatBot extends React.Component {
         this.inputRef = React.createRef();
     }
 
-    handleSend(val) {
+    async handleSend(val) {
+        if (val.trim().length === 0)
+            return;
+
         this.setState(
             prevState => ({
                 messages: prevState.messages.concat({
@@ -47,6 +52,22 @@ class ChatBot extends React.Component {
             })
         );
         this.inputRef.current.input.state.value = '';
+
+        try {
+            const response = await fetchResponse(val);
+            if (response.status === 200) {
+                this.setState(
+                    prevState => ({
+                        messages: prevState.messages.concat({
+                            id: 0,
+                            text: response.data
+                        })
+                    })
+                );
+            }
+        } catch (err) {
+            console.log(err);
+        }
     } 
     
     render() {
