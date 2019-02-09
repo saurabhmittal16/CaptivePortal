@@ -10,11 +10,5 @@ exports.findDetails = async (req, res) => {
         ...obj
     });
 
-    let str = '';
-    
-    events.forEach(
-        event => str += `${event.name} is on ${event.time} at ${event.location}\n`
-    )
-    
-    return res.send(str);
+    return res.send(events);
 }
