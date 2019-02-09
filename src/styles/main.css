@@ -307,10 +307,28 @@ template {
 h1 {
   color: red; }
 
-.chat-button {
-  position: absolute;
-  bottom: 0;
-  right: 0; }
+.chat .head {
+  background-color: #29297a;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.904);
+  padding: 10px 10px; }
 
-.about1 {
-  margin-top: 25%; }
+.chat .body {
+  padding: 10px; }
+
+.chat .message {
+  position: fixed;
+  bottom: 0;
+  width: 100%; }
+  .chat .message .search input {
+    width: 100%; }
+
+.botMessage {
+  width: 100%;
+  padding: 10px; }
+
+.userMessage {
+  width: 100%;
+  padding: 10px;
+  float: right;
+  text-align: right; }

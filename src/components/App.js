@@ -9,8 +9,8 @@ class App extends React.Component {
         return (
             <BrowserRouter>
                 <Switch>
-                    <Route exact path='/chatbot' component={ChatBot} />
-                    <Route path='/' component={Home} />
+                    <Route path='/' component={ChatBot} />
+                    <Route path='/home' component={Home} />
                 </Switch>
             </BrowserRouter>
         );
