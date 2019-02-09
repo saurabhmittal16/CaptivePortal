@@ -306,3 +306,11 @@ template {
 
 h1 {
   color: red; }
+
+.chat-button {
+  position: absolute;
+  bottom: 0;
+  right: 0; }
+
+.about1 {
+  margin-top: 25%; }
