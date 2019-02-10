@@ -1,10 +1,10 @@
-const controller = require('./../controller/event.js')
+const controller = require('./../controller')
 
 const routes = [
     {
         method: 'GET',
         url: '/api/event',
-        handler: controller.findDetails
+        handler: controller.findEventDeatils
     }
 ];
 
