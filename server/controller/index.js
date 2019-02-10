@@ -1,6 +1,6 @@
 const Event = require('../models/Event')
 
-exports.findEventDeatils = async (req, res) => {
+exports.findEventDetails = async (req, res) => {
     const ourQuery = Object.keys(req.query)[0];
     const value = req.query[ourQuery];
     let obj = {};
@@ -9,6 +9,5 @@ exports.findEventDeatils = async (req, res) => {
     const events = await Event.find({
         ...obj
     });
-
     return res.send(events);
 }

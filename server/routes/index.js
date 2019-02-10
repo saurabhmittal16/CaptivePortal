@@ -4,7 +4,7 @@ const routes = [
     {
         method: 'GET',
         url: '/api/event',
-        handler: controller.findEventDeatils
+        handler: controller.findEventDetails
     }
 ];
 
